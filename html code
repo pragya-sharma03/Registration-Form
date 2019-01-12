@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>
+form page
+</title>
+</head>
+<body background="img8.png">
+<form action="details.php" name="f" method="post" onsubmit="return myfunction()">
+First Name:<input type="text" name="fname"  id="fname" required><br/><br/>
+Last Name:<input type="text" name="lname"  id="lname" required><br/><br/>
+E-mail Id:<input type="text" name="email"  value="" required><br/> <br/> 	<p id="reqe" style="color:red;"></p>
+Phone-no:<input type="text" name="no"  value="" required><br/>   <br/>  		<p id="reqn" style="color:red;"></p>
+Message:<textarea name="msg" row="5" cols="40" id="msg"></textarea><br/><br/>
+Gender: Male<input type="radio" name="gen" required value="Male">
+Female<input type="radio" name="gen" required value="Female">
+Other<input type="radio" name="gen" required value="Other">
+<span id="gen" style="color:red"></span><br/><br/>
+Verify :<input type="checkbox" name="verify" id="verify" required>Yes,I agree and i am not a Robot<br/>
+Submit:<input type="submit" name="submit" value="OK"><br/>
+
+<p>For more information :-<br/>
+Contact us @9467897962</p>
+</form>
+<script language="Javascript">
+function myfunction()
+{
+var e=document.f.email.value;
+var x=document.f.no.value;
+var m=document.f.gen.value;
+if (e.indexOf('@')<=0)
+{
+document.getElementById('reqe').innerHTML="*invalid syntax ";
+return false;
+}
+if(e.charAt(e.length-4)!='.')
+{
+document.getElementById('reqe').innerHTML="*invalid syntax or must contain @ and .   ";
+return false;
+}
+if(isNaN(x) || x.length!=10  )
+{
+document.getElementById('reqn').innerHTML="*Must contain atleast 10 digits";
+return false;
+}
+if((m.checked==false))
+{
+document.getElementById("gen").innerHTML="*Select any one";
+return false;
+}
+else
+return true;
+}
+</script>
+</body>
+</html>
