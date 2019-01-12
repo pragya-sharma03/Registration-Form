@@ -1,0 +1,36 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+Welcome <?php echo $_POST['fname'];?> <?php echo $_POST['lname'];?>!<br/>
+Your Email-Id is <?php echo$_POST['email'];?><br/>
+Your Phone no is <?php echo$_POST['no'];?><br/>
+And your message is <?php echo$_POST['msg'];?><br/>
+<?php echo$_POST['gen'];?><br/>
+<?php echo$_POST['verify'];?>
+<?php
+$host="root";
+$user="u502635093_sneh";
+$pass="";
+$db="u502635093_demo";
+
+$conn = mysqli_connect($host, $user, $pass,$db);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+if(isset($_REQUEST['submit']))
+{
+$fname=$_REQUEST['fname'];
+$lname=$_REQUEST['lname'];
+$email=$_REQUEST['email'];
+$no=$_REQUEST['no'];
+$gender=$_REQUEST['gen'];
+$verify=$_REQUEST['verify'];
+mysqli_query( $conn,"insert into form(first_name,last_name,email,no,gender,verification)values($fname,$lname,$email,$no,$gender,$verify)");
+}
+echo "db created";
+?>
+</body>
+</html>
